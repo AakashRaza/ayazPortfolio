@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M Ayaz Ul Hassan - iOS Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1f2a44;
+            background: #f9f9f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        header {
+            background: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #b91c1c;
+        }
+
+        .logo span {
+            color: #ef4444;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        nav ul li a {
+            color: #1f2a44;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ef4444;
+        }
+
+        .hero {
+            padding: 8rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, #b91c1c 0%, #ef4444 100%);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-weight: 300;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #ef4444;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #dc2626;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+        }
+
+        .btn-outline:hover {
+            background: #ffffff;
+            color: #b91c1c;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1f2a44;
+        }
+
+        .section-title p {
+            color: #64748b;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0.5rem auto 0;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><circle cx="50" cy="50" r="50" fill="none" stroke="%23ef4444" stroke-width="1"/></svg>') repeat;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .about-text h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #b91c1c;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            color: #475569;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .about-text p::before {
+            content: '▹';
+            color: #ef4444;
+            margin-right: 0.75rem;
+            font-size: 1.2rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 12px;
+            border: 2px solid #ef4444;
+            transition: transform 0.3s ease;
+        }
+
+        .about-image img:hover {
+            transform: scale(1.02);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f1f1;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.1);
+        }
+
+        .skill-card i {
+            font-size: 2.25rem;
+            color: #ef4444;
+            margin-bottom: 1rem;
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #1f2a44;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-card p {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #f1f1f1;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.1);
+        }
+
+        .project-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1f2a44;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: #64748b;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ef4444;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #dc2626;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            background: #ffffff;
+            padding: 2.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .contact-info h3 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: #1f2a44;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-details {
+            list-style: none;
+        }
+
+        .contact-details li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .contact-details i {
+            font-size: 1.2rem;
+            color: #ef4444;
+            background: #fef2f2;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .contact-details span {
+            color: #475569;
+            font-size: 0.95rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: #1f2a44;
+            font-weight: 500;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #ef4444;
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        footer {
+            background: #1f2a44;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.4rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ef4444;
+        }
+
+        @media (max-width: 1024px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+        }
+
+        .animate-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .animate-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">M Ayaz Ul<span>H</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1 class="animate-in">M Ayaz Ul Hassan</h1>
+            <p class="animate-in">Building Innovative iOS Solutions with Precision and Passion</p>
+            <a href="#projects" class="btn animate-in">View Portfolio</a>
+            <a href="#contact" class="btn btn-outline animate-in">Contact Me</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+                <p>Professional iOS developer delivering cutting-edge mobile solutions</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Expert iOS Developer</h3>
+                    <p>I am a seasoned iOS developer specializing in creating robust and user-friendly mobile applications using Swift and SwiftUI. My expertise covers the full development lifecycle, from ideation to successful App Store deployment.</p>
+                    <p>Proficient in modern architectures like MVC and MVVM, I utilize technologies such as Core Data, MapKit, and Firebase to build scalable and efficient apps. My approach emphasizes clean code, intuitive design, and seamless user experiences.</p>
+                    <p>With a strong foundation in API integration, database management, and project leadership, I excel in collaborative settings, delivering high-quality solutions that drive business success.</p>
+                </div>
+                <div class="about-image">
+  <img src="images/DSC00939ee (1) copy 2.jpg" 
+        alt="M Ayaz Ul Hassan" 
+        style="width:600px; height:600px; object-fit:cover; border-radius:50%;">
+</div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Expertise</h2>
+                <p>Technical skills driving mobile innovation</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card animate-in">
+                    <i class="fab fa-swift"></i>
+                    <h3>iOS Development</h3>
+                    <p>Swift, SwiftUI, UIKit, Storyboard, Core Data, MapKit</p>
+                </div>
+                <div class="skill-card animate-in">
+                    <i class="fas fa-layer-group"></i>
+                    <h3>Architecture</h3>
+                    <p>MVC, MVVM, OOP, Design Patterns</p>
+                </div>
+                <div class="skill-card animate-in">
+                    <i class="fas fa-server"></i>
+                    <h3>Backend Integration</h3>
+                    <p>RESTful APIs, Firebase, Database Management</p>
+                </div>
+                <div class="skill-card animate-in">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>App Deployment</h3>
+                    <p>App Store Submission, Project Management</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Projects</h2>
+                <p>Showcasing my work on the App Store</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card animate-in">
+                    <a href="https://apps.apple.com/us/app/ai-image-creator-pro/id6498883001" target="_blank">
+                        <div class="project-image">
+                            <img src="images/Screenshot 2025-09-10 122427.png">
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3>AI Image Creator Pro</h3>
+                        <p>AI-powered image generation tool with an intuitive interface for creative professionals.</p>
+                        <a href="https://apps.apple.com/us/app/ai-image-creator-pro/id6498883001" class="project-link" target="_blank">View on App Store <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="project-card animate-in">
+                    <a href="https://apps.apple.com/pk/app/ai-all-language-translator/id6633436050" target="_blank">
+                        <div class="project-image">
+                            <img src="images/Screenshot 2025-09-10 122555.png">
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3>AI All Language Translator</h3>
+                        <p>Real-time translation app supporting multiple languages with high accuracy and speed.</p>
+                        <a href="https://apps.apple.com/pk/app/ai-all-language-translator/id6633436050" class="project-link" target="_blank">View on App Store <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="project-card animate-in">
+                    <a href="https://apps.apple.com/pk/app/eatlaa/id1642024213" target="_blank">
+                        <div class="project-image">
+                            <img src="images/Screenshot 2025-09-10 122747.png">
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3>Eatlaa</h3>
+                        <p>Food delivery platform connecting users with local restaurants for seamless ordering.</p>
+                        <a href="https://apps.apple.com/pk/app/eatlaa/id1642024213" class="project-link" target="_blank">View on App Store <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="project-card animate-in">
+                    <a href="https://apps.apple.com/pk/app/eatlaa-seller/id1642024218" target="_blank">
+                        <div class="project-image">
+                            <img src="images/Screenshot 2025-09-10 123305.png">
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3>Eatlaa Seller</h3>
+                        <p>Management app for restaurant owners to streamline orders and inventory.</p>
+                        <a href="https://apps.apple.com/pk/app/eatlaa-seller/id1642024218" class="project-link" target="_blank">View on App Store <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                <div class="project-card animate-in">
+                    <a href="https://apps.apple.com/pk/app/vidchex/id1668109635" target="_blank">
+                        <div class="project-image">
+                            <img src="images/Screenshot 2025-09-10 123455.png">
+                        </div>
+                    </a>
+                    <div class="project-info">
+                        <h3>VidChex</h3>
+                        <p>Advanced video analysis tool designed for content creators and professionals.</p>
+                        <a href="https://apps.apple.com/pk/app/vidchex/id1668109635" class="project-link" target="_blank">View on App Store <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Me</h2>
+                <p>Let's collaborate on your next project</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Connect with Me</h3>
+                    <ul class="contact-details">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>ayazulhassan539@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-globe"></i>
+                            <span>https://www.lhassan.com</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Lahore, Pakistan</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+92 340 727 9539</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" required placeholder="Enter your full name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="Enter your email address">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" id="subject" required placeholder="Enter the subject">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" required placeholder="Describe your project or inquiry"></textarea>
+                    </div>
+                    <button type="button" class="btn" onclick="handleSubmit()">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/ayaz-ul-hassan-39178a219/"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2025 M Ayaz Ul Hassan. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Scroll animations
+        function initAnimations() {
+            const elements = document.querySelectorAll('.animate-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.2 });
+
+            elements.forEach(element => observer.observe(element));
+        }
+
+        // Form submission handler
+        function handleSubmit() {
+            const form = document.querySelector('.contact-form');
+            const name = form.querySelector('#name').value;
+            const email = form.querySelector('#email').value;
+            const subject = form.querySelector('#subject').value;
+            const message = form.querySelector('#message').value;
+
+            if (name && email && subject && message) {
+                alert('Thank you for your message! I will respond promptly.');
+                form.querySelector('#name').value = '';
+                form.querySelector('#email').value = '';
+                form.querySelector('#subject').value = '';
+                form.querySelector('#message').value = '';
+            } else {
+                alert('Please complete all fields before submitting.');
+            }
+        }
+
+        // Initialize animations on load
+        window.addEventListener('load', initAnimations);
+    </script>
+</body>
+</html>
